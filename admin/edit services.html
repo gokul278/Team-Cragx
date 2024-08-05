@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="blue-theme">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edit Services</title>
+    <link
+      rel="icon"
+      href="assets/images/Favicon/CragX Logo.png"
+      type="image/png"
+    />
+    <link href="assets/css/pace.min.css" rel="stylesheet" />
+    <script src="assets/js/pace.min.js"></script>
+    <link
+      href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/plugins/metismenu/metisMenu.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/plugins/metismenu/mm-vertical.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/plugins/simplebar/css/simplebar.css"
+    />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="assets/plugins/datatable/css/dataTables.bootstrap5.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.css"
+    />
+    <!-- JQuery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.min.js"></script>
+    <link href="assets/css/bootstrap-extended.css" rel="stylesheet" />
+    <link href="sass/main.css" rel="stylesheet" />
+    <link href="sass/dark-theme.css" rel="stylesheet" />
+    <link href="sass/blue-theme.css" rel="stylesheet" />
+    <link href="sass/semi-dark.css" rel="stylesheet" />
+    <link href="sass/bordered-theme.css" rel="stylesheet" />
+    <link href="sass/responsive.css" rel="stylesheet" />
+
+    <style>
+      .loader {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+      }
+
+      .loader div {
+        width: 8%;
+        height: 24%;
+        background: white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        opacity: 0;
+        border-radius: 50px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        animation: fade458 1s linear infinite;
+      }
+
+      @keyframes fade458 {
+        from {
+          opacity: 1;
+        }
+
+        to {
+          opacity: 0.25;
+        }
+      }
+
+      .loader .bar1 {
+        transform: rotate(0deg) translate(0, -130%);
+        animation-delay: 0s;
+      }
+
+      .loader .bar2 {
+        transform: rotate(30deg) translate(0, -130%);
+        animation-delay: -1.1s;
+      }
+
+      .loader .bar3 {
+        transform: rotate(60deg) translate(0, -130%);
+        animation-delay: -1s;
+      }
+
+      .loader .bar4 {
+        transform: rotate(90deg) translate(0, -130%);
+        animation-delay: -0.9s;
+      }
+
+      .loader .bar5 {
+        transform: rotate(120deg) translate(0, -130%);
+        animation-delay: -0.8s;
+      }
+
+      .loader .bar6 {
+        transform: rotate(150deg) translate(0, -130%);
+        animation-delay: -0.7s;
+      }
+
+      .loader .bar7 {
+        transform: rotate(180deg) translate(0, -130%);
+        animation-delay: -0.6s;
+      }
+
+      .loader .bar8 {
+        transform: rotate(210deg) translate(0, -130%);
+        animation-delay: -0.5s;
+      }
+
+      .loader .bar9 {
+        transform: rotate(240deg) translate(0, -130%);
+        animation-delay: -0.4s;
+      }
+
+      .loader .bar10 {
+        transform: rotate(270deg) translate(0, -130%);
+        animation-delay: -0.3s;
+      }
+
+      .loader .bar11 {
+        transform: rotate(300deg) translate(0, -130%);
+        animation-delay: -0.2s;
+      }
+
+      .loader .bar12 {
+        transform: rotate(330deg) translate(0, -130%);
+        animation-delay: -0.1s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="top-header">
+      <nav class="navbar navbar-expand align-items-center gap-4">
+        <div class="btn-toggle">
+          <a href="javascript:;"><i class="material-icons-outlined">menu</i></a>
+        </div>
+        <div class="search-bar flex-grow-1">
+          <div class="position-relative">
+            <input
+              class="form-control rounded-5 px-5 search-control d-lg-block d-none"
+              type="text"
+              placeholder="Search"
+            />
+            <span
+              class="material-icons-outlined position-absolute d-lg-block d-none ms-3 translate-middle-y start-0 top-50"
+              >search</span
+            >
+            <span
+              class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 search-close"
+              >close</span
+            >
+            <div class="search-popup p-3">
+              <div class="card rounded-4 overflow-hidden">
+                <div class="card-header d-lg-none">
+                  <div class="position-relative">
+                    <input
+                      class="form-control rounded-5 px-5 mobile-search-control"
+                      type="text"
+                      placeholder="Search"
+                    />
+                    <span
+                      class="material-icons-outlined position-absolute ms-3 translate-middle-y start-0 top-50"
+                      >search</span
+                    >
+                    <span
+                      class="material-icons-outlined position-absolute me-3 translate-middle-y end-0 top-50 mobile-search-close"
+                      >close</span
+                    >
+                  </div>
+                </div>
+                <div class="card-body search-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav gap-1 nav-right-links align-items-center">
+          <li class="nav-item d-lg-none mobile-search-btn">
+            <a class="nav-link" href="javascript:;"
+              ><i class="material-icons-outlined">search</i></a
+            >
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle dropdown-toggle-nocaret"
+              data-bs-auto-close="outside"
+              data-bs-toggle="dropdown"
+              href="javascript:;"
+              ><i class="material-icons-outlined">apps</i></a
+            >
+            <div
+              class="dropdown-menu dropdown-menu-end dropdown-apps shadow-lg p-3"
+            >
+              <div class="border rounded-4 overflow-hidden">
+                <div class="row row-cols-3 g-0 border-bottom">
+                  <div class="col border-end">
+                    <a href="https://team-cragx.in/" target="_blank">
+                      <div
+                        class="app-wrapper d-flex flex-column gap-2 text-center"
+                      >
+                        <div class="app-icon">
+                          <img
+                            src="assets/images/apps/05.png"
+                            width="36"
+                            alt=""
+                          />
+                        </div>
+                        <div class="app-name">
+                          <p style="color: #fff" class="mb-0" class="mb-0">
+                            <b>Google</b>
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col border-end">
+                    <a href="mailto:teamcragx@gmail.com">
+                      <div
+                        class="app-wrapper d-flex flex-column gap-2 text-center"
+                      >
+                        <div class="app-icon">
+                          <img
+                            src="assets/images/apps/01.png"
+                            width="36"
+                            alt=""
+                          />
+                        </div>
+                        <div class="app-name">
+                          <p style="color: #fff" class="mb-0"><b>Gmail</b></p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col border-end">
+                    <a
+                      href="https://youtu.be/HV8lS2ahce0?si=gs0XTaDXvsLgWqJJ"
+                      target="_blank"
+                    >
+                      <div
+                        class="app-wrapper d-flex flex-column gap-2 text-center"
+                      >
+                        <div class="app-icon">
+                          <img
+                            src="assets/images/apps/04.png"
+                            width="36"
+                            alt=""
+                          />
+                        </div>
+                        <div class="app-name">
+                          <p style="color: #fff" class="mb-0"><b>YouTube</b></p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="row row-cols-3 g-0 border-bottom">
+                  <div class="col border-end">
+                    <a href="https://instagram.com/team_cragx" target="_blank">
+                      <div
+                        class="app-wrapper d-flex flex-column gap-2 text-center"
+                      >
+                        <div class="app-icon">
+                          <img
+                            src="assets/images/apps/06.png"
+                            width="36"
+                            alt=""
+                          />
+                        </div>
+                        <div class="app-name">
+                          <p style="color: #fff" class="mb-0">
+                            <b>Instagram</b>
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col border-end">
+                    <a href="https://x.com/team_cragx" target="_blank">
+                      <div
+                        class="app-wrapper d-flex flex-column gap-2 text-center"
+                      >
+                        <div class="app-icon">
+                          <img
+                            src="assets/images/apps/twitter-circle.png"
+                            width="36"
+                            alt=""
+                          />
+                        </div>
+                        <div class="app-name">
+                          <p style="color: #fff" class="mb-0"><b>X</b></p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col border-end">
+                    <a
+                      href="https://www.facebook.com/teamCragX"
+                      target="_blank"
+                    >
+                      <div
+                        class="app-wrapper d-flex flex-column gap-2 text-center"
+                      >
+                        <div class="app-icon">
+                          <img
+                            src="assets/images/apps/17.png"
+                            width="36"
+                            alt=""
+                          />
+                        </div>
+                        <div class="app-name">
+                          <p style="color: #fff" class="mb-0">
+                            <b>Facebook</b>
+                          </p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <div class="dropdown-menu dropdown-notify dropdown-menu-end shadow">
+              <div class="notify-list"></div>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              href="javascrpt:;"
+              class="dropdown-toggle dropdown-toggle-nocaret"
+              data-bs-toggle="dropdown"
+            >
+              <img
+                src="assets/images/Favicon/CragX Logo.png"
+                class="rounded-circle p-1 border"
+                width="45"
+                height="45"
+                alt=""
+              />
+            </a>
+            <div class="dropdown-menu dropdown-user dropdown-menu-end shadow">
+              <a class="dropdown-item gap-2 py-2" href="javascript:;">
+                <div class="text-center">
+                  <img
+                    src="assets/images/Favicon/CragX Logo.png"
+                    class="rounded-circle p-1 shadow mb-3"
+                    width="90"
+                    height="90"
+                    alt=""
+                  />
+                  <h5 class="user-name mb-0 fw-bold">Hello, Admin</h5>
+                </div>
+              </a>
+
+              <hr class="dropdown-divider" />
+              <a
+                href="logout.php"
+                class="dropdown-item d-flex align-items-center gap-2 py-2"
+                href="javascript:;"
+                ><i class="material-icons-outlined">power_settings_new</i
+                >Logout</a
+              >
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <aside class="sidebar-wrapper" data-simplebar="true">
+      <div class="sidebar-header">
+        <div class="logo-icon">
+          <img
+            src="assets/images/Favicon/CragX Logo.png"
+            class="logo-img"
+            alt=""
+          />
+        </div>
+        <div class="logo-name flex-grow-1">
+          <h5 class="mb-0"><b>CragX</b></h5>
+        </div>
+        <div class="sidebar-close">
+          <span class="material-icons-outlined">close</span>
+        </div>
+      </div>
+      <div class="sidebar-nav">
+        <ul class="metismenu" id="sidenav">
+          <li>
+            <a href="dashboard.html">
+              <div class="parent-icon">
+                <i class="material-icons-outlined">home</i>
+              </div>
+              <div class="menu-title"><b>Welcome</b></div>
+            </a>
+          </li>
+
+          <li>
+            <a href="users.html">
+              <div class="parent-icon">
+                <i class="material-icons-outlined">person</i>
+              </div>
+              <div class="menu-title"><b>Users Profiles</b></div>
+            </a>
+          </li>
+
+          <li>
+            <a href="javascript:;" class="has-arrow">
+              <div class="parent-icon">
+                <i class="material-icons-outlined">inventory_2</i>
+              </div>
+              <div class="menu-title"><b>Services</b></div>
+            </a>
+            <ul>
+              <li>
+                <a href="add services.html"
+                  ><i class="material-icons-outlined">arrow_right</i
+                  ><b>Add Services</b></a
+                >
+              </li>
+              <li>
+                <a href="edit services.html"
+                  ><i class="material-icons-outlined">arrow_right</i
+                  ><b>Edit Services</b></a
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="javascript:;" class="has-arrow">
+              <div class="parent-icon">
+                <i class="material-icons-outlined">api</i>
+              </div>
+              <div class="menu-title"><b>Projects</b></div>
+            </a>
+            <ul>
+              <li>
+                <a href="add projects.html"
+                  ><i class="material-icons-outlined">arrow_right</i
+                  ><b>Add Projects</b></a
+                >
+              </li>
+              <li>
+                <a href="edit projects.html"
+                  ><i class="material-icons-outlined">arrow_right</i
+                  ><b>Edit Projects</b></a
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="contact-form.html">
+              <div class="parent-icon">
+                <i class="material-icons-outlined">toc</i>
+              </div>
+              <div class="menu-title"><b>Contact Form</b></div>
+            </a>
+          </li>
+
+          <li>
+            <a href="subscribers.html">
+              <div class="parent-icon">
+                <i class="material-icons-outlined">card_giftcard</i>
+              </div>
+              <div class="menu-title"><b>Subscribers</b></div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <main class="main-wrapper">
+      <div class="main-content">
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+          <div class="ps-3">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item">
+                  <a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  <b>Edit Services</b>
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+        <hr />
+
+        <div class="card">
+          <div class="card-body">
+            <div class="table-responsive">
+              <br />
+              <table
+                style="
+                  text-align: center;
+                  font-size: larger;
+                  font-weight: bolder;
+                "
+                id="example2"
+                class="table table-striped table-bordered"
+              >
+                <thead>
+                  <tr>
+                    <th><h3>S.NO</h3></th>
+                    <th><h3>Images</h3></th>
+                    <th><h3>Service Name</h3></th>
+                    <th><h3>Actions</h3></th>
+                  </tr>
+                </thead>
+                <tbody id="servicedata">
+                  <tr>
+                    <td colspan="4">
+                      <div style="display: flex; justify-content: center">
+                        Loading &nbsp;
+                        <div class="loader">
+                          <div class="bar1"></div>
+                          <div class="bar2"></div>
+                          <div class="bar3"></div>
+                          <div class="bar4"></div>
+                          <div class="bar5"></div>
+                          <div class="bar6"></div>
+                          <div class="bar7"></div>
+                          <div class="bar8"></div>
+                          <div class="bar9"></div>
+                          <div class="bar10"></div>
+                          <div class="bar11"></div>
+                          <div class="bar12"></div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="overlay btn-toggle"></div>
+
+    <button
+      class="btn btn-grd btn-grd-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center justify-content-center rounded-circle"
+      style="width: 50px; height: 50px"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#staticBackdrop"
+    >
+      <i class="material-icons-outlined">dark_mode</i>
+    </button>
+
+    <div
+      class="offcanvas offcanvas-end"
+      data-bs-scroll="true"
+      tabindex="-1"
+      id="staticBackdrop"
+    >
+      <div class="offcanvas-header border-bottom h-70">
+        <a
+          href="javascript:;"
+          class="primaery-menu-close"
+          data-bs-dismiss="offcanvas"
+        >
+          <i class="material-icons-outlined">close</i>
+        </a>
+      </div>
+      <div class="offcanvas-body">
+        <div>
+          <div class="row g-3">
+            <div class="col-12 col-xl-6">
+              <input
+                type="radio"
+                class="btn-check"
+                name="theme-options"
+                id="BlueTheme"
+                checked
+              />
+              <label
+                class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+                for="BlueTheme"
+              >
+                <span class="material-icons-outlined">contactless</span>
+                <span>Blue</span>
+              </label>
+            </div>
+            <div class="col-12 col-xl-6">
+              <input
+                type="radio"
+                class="btn-check"
+                name="theme-options"
+                id="LightTheme"
+              />
+              <label
+                class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+                for="LightTheme"
+              >
+                <span class="material-icons-outlined">light_mode</span>
+                <span>Light</span>
+              </label>
+            </div>
+            <div class="col-12 col-xl-6">
+              <input
+                type="radio"
+                class="btn-check"
+                name="theme-options"
+                id="DarkTheme"
+              />
+              <label
+                class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+                for="DarkTheme"
+              >
+                <span class="material-icons-outlined">dark_mode</span>
+                <span>Dark</span>
+              </label>
+            </div>
+            <div class="col-12 col-xl-6">
+              <input
+                type="radio"
+                class="btn-check"
+                name="theme-options"
+                id="SemiDarkTheme"
+              />
+              <label
+                class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+                for="SemiDarkTheme"
+              >
+                <span class="material-icons-outlined">contrast</span>
+                <span>Semi Dark</span>
+              </label>
+            </div>
+            <div class="col-12 col-xl-6">
+              <input
+                type="radio"
+                class="btn-check"
+                name="theme-options"
+                id="BoderedTheme"
+              />
+              <label
+                class="btn btn-outline-secondary d-flex flex-column gap-1 align-items-center justify-content-center p-4"
+                for="BoderedTheme"
+              >
+                <span class="material-icons-outlined">border_style</span>
+                <span>Bordered</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="assets/plugins/metismenu/metisMenu.min.js"></script>
+    <script src="assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+    <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <script src="./requiredFiles/js/editservices.js"></script>
+  </body>
+</html>
