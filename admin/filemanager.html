@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Admin Index</title>
+    <title>File Manager</title>
 
     <link
       rel="icon"
@@ -44,6 +44,16 @@
       rel="stylesheet"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link href="assets/css/bootstrap-extended.css" rel="stylesheet" />
     <link href="sass/main.css" rel="stylesheet" />
     <link href="sass/dark-theme.css" rel="stylesheet" />
@@ -51,9 +61,106 @@
     <link href="sass/semi-dark.css" rel="stylesheet" />
     <link href="sass/bordered-theme.css" rel="stylesheet" />
     <link href="sass/responsive.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.min.js"></script>
+
     <style>
       body {
         overflow: hidden;
+      }
+
+      .loader {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+      }
+
+      .loader div {
+        width: 8%;
+        height: 24%;
+        background: white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        opacity: 0;
+        border-radius: 50px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        animation: fade458 1s linear infinite;
+      }
+
+      @keyframes fade458 {
+        from {
+          opacity: 1;
+        }
+
+        to {
+          opacity: 0.25;
+        }
+      }
+
+      .loader .bar1 {
+        transform: rotate(0deg) translate(0, -130%);
+        animation-delay: 0s;
+      }
+
+      .loader .bar2 {
+        transform: rotate(30deg) translate(0, -130%);
+        animation-delay: -1.1s;
+      }
+
+      .loader .bar3 {
+        transform: rotate(60deg) translate(0, -130%);
+        animation-delay: -1s;
+      }
+
+      .loader .bar4 {
+        transform: rotate(90deg) translate(0, -130%);
+        animation-delay: -0.9s;
+      }
+
+      .loader .bar5 {
+        transform: rotate(120deg) translate(0, -130%);
+        animation-delay: -0.8s;
+      }
+
+      .loader .bar6 {
+        transform: rotate(150deg) translate(0, -130%);
+        animation-delay: -0.7s;
+      }
+
+      .loader .bar7 {
+        transform: rotate(180deg) translate(0, -130%);
+        animation-delay: -0.6s;
+      }
+
+      .loader .bar8 {
+        transform: rotate(210deg) translate(0, -130%);
+        animation-delay: -0.5s;
+      }
+
+      .loader .bar9 {
+        transform: rotate(240deg) translate(0, -130%);
+        animation-delay: -0.4s;
+      }
+
+      .loader .bar10 {
+        transform: rotate(270deg) translate(0, -130%);
+        animation-delay: -0.3s;
+      }
+
+      .loader .bar11 {
+        transform: rotate(300deg) translate(0, -130%);
+        animation-delay: -0.2s;
+      }
+
+      .loader .bar12 {
+        transform: rotate(330deg) translate(0, -130%);
+        animation-delay: -0.1s;
       }
     </style>
   </head>
@@ -416,7 +523,7 @@
                   <a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  <b>Welcome Admin 😁💙</b>
+                  <b>File Manager</b>
                 </li>
               </ol>
             </nav>
@@ -436,70 +543,105 @@
                 text-align: center;
               "
             >
-              <marquee
-                style="margin-top: 50px; margin-bottom: 8vh"
-                scrollamount="12"
-              >
-                <h1>
-                  <b style="font-family: 'Times New Roman', Times, serif"
-                    >WELCOME TO OUR TEAM
-                    <img
-                      src="./assets/images/Favicon/CragX Logo.png"
-                      width="60"
-                    />
-                    CRAGX ADMIN</b
-                  >
-                </h1>
-              </marquee>
-              <div
-                style="
-                  width: 100%;
-                  display: flex;
-                  flex-wrap: wrap;
-                  justify-content: space-around;
-                  align-items: center;
-                  gap: 40px 0px;
-                "
-              >
-                <div>
-                  <div style="font-size: 20px; margin-bottom: 5px">
-                    Contact Form
-                  </div>
-                  <div
+              <div style="width: 100%; height: 76vh">
+                <div align="start">
+                  <button
+                    type="button"
+                    class="btn btn-grd btn-grd-primary px-4"
                     style="
-                      border-radius: 5px;
-                      font-size: 18px;
-                      padding-top: 5px;
-                      padding-bottom: 5px;
-                      width: +200px;
-                      background-color: #50b498;
-                      color: black;
-                      font-weight: 600;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
                     "
-                    id="totalcontactus"
+                    data-bs-toggle="modal"
+                    data-bs-target="#createfolderModal"
                   >
-                    Loading
-                  </div>
+                    <i class="material-icons-outlined">add</i>&nbsp;&nbsp;
+                    <div>Add New Folder</div>
+                  </button>
                 </div>
-                <div>
-                  <div style="font-size: 20px; margin-bottom: 5px">
-                    Subscribers
-                  </div>
+                <div
+                  style="
+                    width: 100%;
+                    height: 66vh;
+                    padding-top: 4vh;
+                    display: flex;
+                    flex-wrap: wrap;
+                    column-gap: 30px;
+                    row-gap: 30px;
+                    overflow-y: auto;
+                  "
+                  id="folder"
+                >
                   <div
                     style="
-                      border-radius: 5px;
+                      display: flex;
+                      justify-content: center;
+                      width: 100%;
+                      margin-top: 20px;
                       font-size: 18px;
-                      padding-top: 5px;
-                      padding-bottom: 5px;
-                      width: +200px;
-                      background-color: #50b498;
-                      color: black;
-                      font-weight: 600;
                     "
-                    id="totalsubscribe"
                   >
-                    Loading
+                    Loading &nbsp;
+                    <div class="loader">
+                      <div class="bar1"></div>
+                      <div class="bar2"></div>
+                      <div class="bar3"></div>
+                      <div class="bar4"></div>
+                      <div class="bar5"></div>
+                      <div class="bar6"></div>
+                      <div class="bar7"></div>
+                      <div class="bar8"></div>
+                      <div class="bar9"></div>
+                      <div class="bar10"></div>
+                      <div class="bar11"></div>
+                      <div class="bar12"></div>
+                    </div>
                   </div>
+                  <!-- <div style="width: 110px; height: 168px">
+                    <div
+                      style="
+                        width: 110px;
+                        height: 120px;
+                        background-color: #181f4a;
+                        border-radius: 10px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                      "
+                    >
+                      <div
+                        style="
+                          margin-top: 2px;
+                          width: 100%;
+                          display: flex;
+                          justify-content: end;
+                          margin-right: 10px;
+                          column-gap: 5px;
+                        "
+                      >
+                        <i
+                          class="material-icons-outlined"
+                          style="color: #3498db"
+                          data-bs-toggle="modal"
+                          data-bs-target="#editrenamemodal"
+                          >edit</i
+                        ><i style="color: red" class="material-icons-outlined"
+                          >delete</i
+                        >
+                      </div>
+                      <a href="./nextfilemanager.html?foldername=new folder">
+                        <img
+                          src="./assets/images/folderimg.png"
+                          alt="folderlogo"
+                          style="width: 85px;margin-top: 5px;"
+                        />
+                      </a>
+                    </div>
+                    <p style="margin-top: 2px; font-size: 15px">New Folder</p>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -618,6 +760,95 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="createfolderModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-bottom-0 py-2 bg-grd-info">
+            <h5 class="modal-title">New Folder</h5>
+            <a
+              href="javascript:;"
+              class="primaery-menu-close"
+              data-bs-dismiss="modal"
+            >
+              <i class="material-icons-outlined">close</i>
+            </a>
+          </div>
+          <div class="modal-body">
+            <div class="form-body">
+              <form class="row g-3" id="myForm">
+                <div class="col-md-12">
+                  <input type="hidden" name="way" value="createfolder">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="foldername"
+                    id="user_name"
+                    placeholder="Enter Folder Name"
+                    required
+                  />
+                </div>
+                <div class="col-md-12">
+                  <div class="d-md-flex d-grid align-items-center">
+                    <button
+                      id="createfolderbtn"
+                      type="submit"
+                      class="btn btn-grd-danger px-4"
+                    >
+                      Create Folder
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="modal fade" id="editrenamemodal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-bottom-0 py-2 bg-grd-info">
+            <h5 class="modal-title">Rename Folder</h5>
+            <a
+              href="javascript:;"
+              class="primaery-menu-close"
+              data-bs-dismiss="modal"
+            >
+              <i class="material-icons-outlined">close</i>
+            </a>
+          </div>
+          <div class="modal-body">
+            <div class="form-body">
+              <form class="row g-3" id="myForm">
+                <div class="col-md-12">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="user_name"
+                    id="user_name"
+                    placeholder="Enter Folder Name"
+                    required
+                  />
+                </div>
+                <div class="col-md-12">
+                  <div class="d-md-flex d-grid align-items-center">
+                    <button
+                      id="usersubmitbtn"
+                      type="submit"
+                      class="btn btn-grd-danger px-4"
+                    >
+                      Rename Folder
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 
     <script src="assets/js/jquery.min.js"></script>
@@ -628,4 +859,4 @@
   </body>
 </html>
 
-<script src="./requiredFiles/js/dashboard.js"></script>
+<script src="./requiredFiles/js/filemanager.js"></script>

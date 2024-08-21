@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Admin Index</title>
+    <title>File Manager</title>
 
     <link
       rel="icon"
@@ -44,6 +44,16 @@
       rel="stylesheet"
     />
 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <link href="assets/css/bootstrap-extended.css" rel="stylesheet" />
     <link href="sass/main.css" rel="stylesheet" />
     <link href="sass/dark-theme.css" rel="stylesheet" />
@@ -51,9 +61,131 @@
     <link href="sass/semi-dark.css" rel="stylesheet" />
     <link href="sass/bordered-theme.css" rel="stylesheet" />
     <link href="sass/responsive.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.min.js"></script>
+
     <style>
       body {
         overflow: hidden;
+      }
+
+      #drop-area {
+        border: 2px dashed #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      #drop-area p {
+        margin: 0;
+        font-size: 16px;
+        color: #666;
+      }
+
+      #fileList {
+        margin-top: 10px;
+      }
+
+      #fileList .file-item {
+        margin: 5px 0;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      .loader {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+      }
+
+      .loader div {
+        width: 8%;
+        height: 24%;
+        background: white;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        opacity: 0;
+        border-radius: 50px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+        animation: fade458 1s linear infinite;
+      }
+
+      @keyframes fade458 {
+        from {
+          opacity: 1;
+        }
+
+        to {
+          opacity: 0.25;
+        }
+      }
+
+      .loader .bar1 {
+        transform: rotate(0deg) translate(0, -130%);
+        animation-delay: 0s;
+      }
+
+      .loader .bar2 {
+        transform: rotate(30deg) translate(0, -130%);
+        animation-delay: -1.1s;
+      }
+
+      .loader .bar3 {
+        transform: rotate(60deg) translate(0, -130%);
+        animation-delay: -1s;
+      }
+
+      .loader .bar4 {
+        transform: rotate(90deg) translate(0, -130%);
+        animation-delay: -0.9s;
+      }
+
+      .loader .bar5 {
+        transform: rotate(120deg) translate(0, -130%);
+        animation-delay: -0.8s;
+      }
+
+      .loader .bar6 {
+        transform: rotate(150deg) translate(0, -130%);
+        animation-delay: -0.7s;
+      }
+
+      .loader .bar7 {
+        transform: rotate(180deg) translate(0, -130%);
+        animation-delay: -0.6s;
+      }
+
+      .loader .bar8 {
+        transform: rotate(210deg) translate(0, -130%);
+        animation-delay: -0.5s;
+      }
+
+      .loader .bar9 {
+        transform: rotate(240deg) translate(0, -130%);
+        animation-delay: -0.4s;
+      }
+
+      .loader .bar10 {
+        transform: rotate(270deg) translate(0, -130%);
+        animation-delay: -0.3s;
+      }
+
+      .loader .bar11 {
+        transform: rotate(300deg) translate(0, -130%);
+        animation-delay: -0.2s;
+      }
+
+      .loader .bar12 {
+        transform: rotate(330deg) translate(0, -130%);
+        animation-delay: -0.1s;
       }
     </style>
   </head>
@@ -415,8 +547,17 @@
                 <li class="breadcrumb-item">
                   <a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">
-                  <b>Welcome Admin 😁💙</b>
+                <li
+                  class="breadcrumb-item active"
+                  aria-current="page"
+                  id="headernav"
+                >
+                  <b
+                    ><a href="./filemanager.html" style="color: #fff"
+                      >File Manager</a
+                    >
+                    / Loading</b
+                  >
                 </li>
               </ol>
             </nav>
@@ -436,69 +577,61 @@
                 text-align: center;
               "
             >
-              <marquee
-                style="margin-top: 50px; margin-bottom: 8vh"
-                scrollamount="12"
-              >
-                <h1>
-                  <b style="font-family: 'Times New Roman', Times, serif"
-                    >WELCOME TO OUR TEAM
-                    <img
-                      src="./assets/images/Favicon/CragX Logo.png"
-                      width="60"
-                    />
-                    CRAGX ADMIN</b
-                  >
-                </h1>
-              </marquee>
-              <div
-                style="
-                  width: 100%;
-                  display: flex;
-                  flex-wrap: wrap;
-                  justify-content: space-around;
-                  align-items: center;
-                  gap: 40px 0px;
-                "
-              >
-                <div>
-                  <div style="font-size: 20px; margin-bottom: 5px">
-                    Contact Form
-                  </div>
-                  <div
+              <div style="width: 100%; height: 78vh" id="uploadbtndiv">
+                <div align="start">
+                  <button
+                    type="button"
+                    class="btn btn-grd btn-grd-primary px-4"
                     style="
-                      border-radius: 5px;
-                      font-size: 18px;
-                      padding-top: 5px;
-                      padding-bottom: 5px;
-                      width: +200px;
-                      background-color: #50b498;
-                      color: black;
-                      font-weight: 600;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      padding-top: 20px;
+                      padding-bottom: 20px;
                     "
-                    id="totalcontactus"
+                    data-bs-toggle="modal"
+                    data-bs-target="#FormModal"
                   >
-                    Loading
-                  </div>
+                    <i class="material-icons-outlined">upload</i>&nbsp;&nbsp;
+                    <div>Upload File</div>
+                  </button>
                 </div>
-                <div>
-                  <div style="font-size: 20px; margin-bottom: 5px">
-                    Subscribers
-                  </div>
+                <div
+                  style="
+                    width: 100%;
+                    height: 66vh;
+                    padding-top: 4vh;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    overflow-y: auto;
+                  "
+                  id="files"
+                >
                   <div
                     style="
-                      border-radius: 5px;
+                      display: flex;
+                      justify-content: center;
+                      width: 100%;
+                      margin-top: 20px;
                       font-size: 18px;
-                      padding-top: 5px;
-                      padding-bottom: 5px;
-                      width: +200px;
-                      background-color: #50b498;
-                      color: black;
-                      font-weight: 600;
                     "
-                    id="totalsubscribe"
                   >
-                    Loading
+                    Loading &nbsp;
+                    <div class="loader">
+                      <div class="bar1"></div>
+                      <div class="bar2"></div>
+                      <div class="bar3"></div>
+                      <div class="bar4"></div>
+                      <div class="bar5"></div>
+                      <div class="bar6"></div>
+                      <div class="bar7"></div>
+                      <div class="bar8"></div>
+                      <div class="bar9"></div>
+                      <div class="bar10"></div>
+                      <div class="bar11"></div>
+                      <div class="bar12"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -618,6 +751,56 @@
         </div>
       </div>
     </div>
+
+    <div class="modal fade" id="FormModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-bottom-0 py-2 bg-grd-info">
+            <h5 class="modal-title">Upload Files</h5>
+            <a
+              href="javascript:;"
+              class="primaery-menu-close"
+              data-bs-dismiss="modal"
+            >
+              <i class="material-icons-outlined">close</i>
+            </a>
+          </div>
+          <div class="modal-body">
+            <div class="form-body">
+              <form class="row g-3" id="myForm">
+                <div class="col-md-12">
+                  <div id="drop-area">
+                    <p>Drag and drop files here or click to select files</p>
+                    <input type="hidden" name="way" value="uploadfile" />
+                    <input
+                      type="file"
+                      id="fileElem"
+                      name="file_name[]"
+                      style="display: none"
+                      multiple
+                      required
+                    />
+                  </div>
+                  <div id="fileList"></div>
+                </div>
+                <div class="col-md-12">
+                  <div class="d-md-flex d-grid align-items-center">
+                    <button
+                      id="uploadbtn"
+                      type="submit"
+                      class="btn btn-grd-danger px-4"
+                    >
+                      Upload File
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 
     <script src="assets/js/jquery.min.js"></script>
@@ -625,7 +808,125 @@
     <script src="assets/plugins/metismenu/metisMenu.min.js"></script>
     <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const dropArea = document.getElementById("drop-area");
+        const fileInput = document.getElementById("fileElem");
+        const fileList = document.getElementById("fileList");
+
+        dropArea.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          dropArea.classList.add("dragover");
+        });
+
+        dropArea.addEventListener("dragleave", () => {
+          dropArea.classList.remove("dragover");
+        });
+
+        dropArea.addEventListener("drop", (e) => {
+          e.preventDefault();
+          dropArea.classList.remove("dragover");
+          const files = e.dataTransfer.files;
+          handleFiles(files);
+        });
+
+        dropArea.addEventListener("click", () => {
+          fileInput.click();
+        });
+
+        fileInput.addEventListener("change", (e) => {
+          const files = e.target.files;
+          handleFiles(files);
+        });
+
+        function handleFiles(files) {
+          fileList.innerHTML = "";
+          for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const fileItem = document.createElement("div");
+            fileItem.classList.add("file-item");
+            fileItem.textContent = file.name;
+            fileList.appendChild(fileItem);
+          }
+        }
+
+        document.getElementById("myForm").addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const folder_name = new URLSearchParams(window.location.search).get(
+            "folder_name"
+          );
+
+          const formData = new FormData();
+          const files = fileInput.files;
+
+          for (let i = 0; i < files.length; i++) {
+            formData.append("file_name[]", files[i]);
+          }
+
+          // Adding way and folder_name to the formData
+          formData.append("way", "uploadfile");
+          formData.append("folder_name", folder_name); // Replace with actual folder name
+
+          $("#uploadbtn").html(`<div style="display:flex">
+        Loading &nbsp;<div class="loader">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <div class="bar4"></div>
+        <div class="bar5"></div>
+        <div class="bar6"></div>
+        <div class="bar7"></div>
+        <div class="bar8"></div>
+        <div class="bar9"></div>
+        <div class="bar10"></div>
+        <div class="bar11"></div>
+        <div class="bar12"></div>
+      </div></div>`);
+          $("#uploadbtn").prop("disabled", true);
+
+          fetch("./requiredFiles/ajax/nextfilemanagerAjax.php", {
+            method: "POST",
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((result) => {
+              if (result.status == "success") {
+                new Notify({
+                    status: 'success',
+                    title: 'File',
+                    text: 'Successfully File Uploaded!',
+                    effect: 'fade',
+                    speed: 300,
+                    customClass: '',
+                    customIcon: '<i class="fa-solid fa-file"></i>',
+                    showIcon: true,
+                    showCloseButton: true,
+                    autoclose: true,
+                    autotimeout: 2000,
+                    notificationsGap: null,
+                    notificationsPadding: null,
+                    type: 'outline',
+                    position: 'right top',
+                    customWrapper: '',
+                })
+                document.getElementById("myForm").reset();
+                $("#FormModal").modal("hide");
+                $("#uploadbtn").html(`Upload File`);
+                $("#uploadbtn").prop("disabled", false);
+
+                return getData();
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert("Error uploading files");
+            });
+        });
+      });
+    </script>
   </body>
 </html>
 
-<script src="./requiredFiles/js/dashboard.js"></script>
+<script src="./requiredFiles/js/nextfilemanager.js"></script>

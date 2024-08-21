@@ -41,19 +41,17 @@ $(document).ready(function () {
                                     <h3>
                                     <a
                                         class="sect-title-two"
-                                        href="https://uccashfoundation.com"
+                                        href="${element.project_link}"
                                         target="_blank"
-                                        >UCCASH FOUNDATION</a
+                                        >${element.project_name}</a
                                     >
                                     </h3>
                                     <p>
-                                    <b>"UCCASH Foundation"</b> is an organization created to
-                                    alleviate the hunger of the poor, provide medical
-                                    assistance and protect nature and environment.
+                                    <b>"${element.project_description}"</b> 
                                     </p>
                                     <a
                                     class="case-btn"
-                                    href="https://uccashfoundation.com"
+                                    href="${element.project_link}"
                                     target="_blank"
                                     ><i class="bi bi-arrow-up-right"></i
                                     ></a>
