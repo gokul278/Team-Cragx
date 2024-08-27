@@ -28,6 +28,35 @@ if ($values["status"] == "success") {
         $response["totalcontactus"] = $resgetcontactuscount["totalcontactus"];
         $response["status"] = "success";
         echo json_encode($response);
+    } else if ($way == "checkgraph") {
+        $year = $_POST["year"];
+        $monthdata = [];
+        $max = 0;
+
+        for ($i = 1; $i <= 12; $i++) {
+            $data = $con->prepare("SELECT * FROM quotation_description WHERE YEAR(createdAt) = ? AND MONTH(createdAt) = ?");
+            $data->bind_param("ii", $year, $i);
+            $data->execute();
+            $result = $data->get_result();
+
+            $val = 0;
+
+            while ($row = $result->fetch_assoc()) {
+                $val += $row["quotation_price"];
+            }
+
+            if ($val >= $max) {
+                $max = $val;
+            }
+
+            array_push($monthdata, $val);
+        }
+
+        $response["maxval"] = $max;
+        $response["data"] = $monthdata;
+
+        $response["status"] = "success";
+        echo json_encode($response);
     } else {
         $response["status"] = "error";
         echo json_encode($response);
