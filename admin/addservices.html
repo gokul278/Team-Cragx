@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Add Projects</title>
+    <title>Add Services</title>
     <link
       rel="icon"
       href="assets/images/Favicon/CragX Logo.png"
@@ -47,14 +47,6 @@
       href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
-    <link href="assets/css/bootstrap-extended.css" rel="stylesheet" />
-    <link href="sass/main.css" rel="stylesheet" />
-    <link href="sass/dark-theme.css" rel="stylesheet" />
-    <link href="sass/blue-theme.css" rel="stylesheet" />
-    <link href="sass/semi-dark.css" rel="stylesheet" />
-    <link href="sass/bordered-theme.css" rel="stylesheet" />
-    <link href="sass/responsive.css" rel="stylesheet" />
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.css"
@@ -77,6 +69,13 @@
     />
 
     <script src="https://cdn.jsdelivr.net/npm/simple-notify@1.0.4/dist/simple-notify.min.js"></script>
+    <link href="assets/css/bootstrap-extended.css" rel="stylesheet" />
+    <link href="sass/main.css" rel="stylesheet" />
+    <link href="sass/dark-theme.css" rel="stylesheet" />
+    <link href="sass/blue-theme.css" rel="stylesheet" />
+    <link href="sass/semi-dark.css" rel="stylesheet" />
+    <link href="sass/bordered-theme.css" rel="stylesheet" />
+    <link href="sass/responsive.css" rel="stylesheet" />
 
     <style>
       .loader {
@@ -454,13 +453,13 @@
             </a>
             <ul>
               <li>
-                <a href="add services.html"
+                <a href="addservices.html"
                   ><i class="material-icons-outlined">arrow_right</i
                   ><b>Add Services</b></a
                 >
               </li>
               <li>
-                <a href="edit services.html"
+                <a href="editservices.html"
                   ><i class="material-icons-outlined">arrow_right</i
                   ><b>Edit Services</b></a
                 >
@@ -477,13 +476,13 @@
             </a>
             <ul>
               <li>
-                <a href="add projects.html"
+                <a href="addprojects.html"
                   ><i class="material-icons-outlined">arrow_right</i
                   ><b>Add Projects</b></a
                 >
               </li>
               <li>
-                <a href="edit projects.html"
+                <a href="editprojects.html"
                   ><i class="material-icons-outlined">arrow_right</i
                   ><b>Edit Projects</b></a
                 >
@@ -544,8 +543,9 @@
         </ul>
       </div>
     </aside>
-    <form id="addprojectform">
-      <main class="main-wrapper">
+
+    <main class="main-wrapper">
+      <form id="addservice">
         <div class="main-content">
           <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
             <div class="ps-3">
@@ -555,23 +555,22 @@
                     <a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                   </li>
                   <li class="breadcrumb-item active" aria-current="page">
-                    <b>Add Projects</b>
+                    <b>Add Services</b>
                   </li>
                 </ol>
               </nav>
             </div>
           </div>
-          <input type="hidden" name="way" value="addproduct">
           <div class="row">
             <div class="col-xl-9 mx-auto">
-              <h4 class="mb-0"><b>Project Image</b></h4>
+              <h4 class="mb-0"><b>Services Image</b></h4>
               <hr />
               <div class="card">
                 <div class="card-body">
                   <input
                     class="form-control"
                     type="file"
-                    name="project_img"
+                    name="service_img"
                     accept=".jpg, .png, image/jpeg, image/png"
                     style="font-size: 20px"
                     required
@@ -580,30 +579,17 @@
               </div>
             </div>
           </div>
+          <input type="hidden" name="way" value="addservice" />
           <div class="card">
             <div class="card-body">
               <label for="exampleDataList" class="form-label"
-                ><h4><b>Project Name</b></h4></label
+                ><h4><b>Service Name</b></h4></label
               >
               <input
                 class="form-control"
                 list="datalistOptions"
-                name="project_name"
-                id="project name"
-                required
-              />
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <label for="exampleDataList" class="form-label"
-                ><h4><b>Project Link</b></h4></label
-              >
-              <input
-                class="form-control"
-                name="project_link"
-                list="datalistOptions"
-                id="url"
+                name="service_name"
+                id="exampleDataList"
                 required
               />
             </div>
@@ -611,11 +597,11 @@
           <div class="card" style="height: 300px">
             <div class="card-body">
               <label for="exampleDataList" class="form-label"
-                ><h4><b>Project Description</b></h4></label
+                ><h4><b>Service Description</b></h4></label
               >
               <textarea
                 class="form-control"
-                name="project_description"
+                name="service_description"
                 id="exampleDataList"
                 style="height: 200px"
                 required
@@ -637,8 +623,8 @@
             </button>
           </div>
         </div>
-      </main>
-    </form>
+      </form>
+    </main>
     <div class="overlay btn-toggle"></div>
 
     <button
@@ -758,9 +744,21 @@
     <script src="assets/plugins/fancy-file-uploader/jquery.iframe-transport.js"></script>
     <script src="assets/plugins/fancy-file-uploader/jquery.fancy-fileupload.js"></script>
     <script src="assets/plugins/Drag-And-Drop/dist/imageuploadify.min.js"></script>
+    <script>
+      $("#fancy-file-upload").FancyFileUpload({
+        params: {
+          action: "fileuploader",
+        },
+        maxfilesize: 1000000,
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#image-uploadify").imageuploadify();
+      });
+    </script>
     <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="assets/js/main.js"></script>
-
-    <script src="./requiredFiles/js/addproject.js"></script>
+    <script src="./requiredFiles/js/addservices.js"></script>
   </body>
 </html>
